@@ -6,9 +6,9 @@
 
 every 3 seconds:
     if {Header} is not set:
-        set all players' tab list header to "&b&l◸ 싱 글 벙 글  테 스 트 서 버 ◿%nl%&aOnline &f&l▪ &e%amount of all players%%nl%"
+        set all players' tab list header to "&b&l◸ 싱 글 벙 글  테 스 트 서 버 ◿%nl%&aOnline &f&l▪ &e%amount of all players%%nl%&aTPS &f&l▪ &e%first element of tps%%nl%"
     else:
-        set all players' tab list header to "%{Header}%%nl%&aOnline &f&l▪ &e%amount of all players%%nl%"
+        set all players' tab list header to "%{Header}%%nl%&aOnline &f&l▪ &e%amount of all players%%nl%&aTPS &f&l▪ &e%first element of tps%%nl%"
 
     if {Footer} is not set:
         set all players' tab list footer to "%nl%&c&l.."
