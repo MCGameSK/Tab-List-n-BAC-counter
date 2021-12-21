@@ -15,18 +15,24 @@ every 3 seconds:
     else:
         set all players' tab list footer to "%nl%%{Footer}%"
 
-    loop all players:
-        if loop-player is in world "world_nether":
-            set {name} to "&4%loop-player's name%"
-        else if loop-player is in world "world_the_end":
-            set {name} to "&5%loop-player's name%"
-        else:
-            set {name} to "%loop-player's name%"
+    if {forceShow} is set:
+        loop all players:
+            if world of loop-player is "world_nether":
+                set loop-player's tab list name to "&c%loop-player's name% &e%loop-player.getScoreboard().getObjective("bac_advancements").getScore(loop-player).getScore()%"
+            else if world of loop-player is "world_the_end":
+                set loop-player's tab list name to "&d%loop-player's name% &e%loop-player.getScoreboard().getObjective("bac_advancements").getScore(loop-player).getScore()%"
+            else:
+                set loop-player's tab list name to "%loop-player's name% &e%loop-player.getScoreboard().getObjective("bac_advancements").getScore(loop-player).getScore()%"
 
-        if {forceShow} is true:
-            set loop-player's tab list name to "%{name}% &e%loop-player.getScoreboard().getObjective("bac_advancements").getScore(loop-player).getScore()%"
-        else:
-            set loop-player's tab list name to "%{name}%"
+
+
+on player world change:
+    if "%event-world%" is "world_nether":
+        set player's tab list name to "&c%player's name%"
+    else if "%event-world%" is "world_the_end":
+        set player's tab list name to "&d%player's name%"
+    else:
+        set player's tab list name to "%player's name%"
 
 
 
