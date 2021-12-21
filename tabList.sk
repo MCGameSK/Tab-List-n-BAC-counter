@@ -1,0 +1,67 @@
+#
+#Github https://github.com/MCGameSK/Tab-List-n-BAC-counter
+#
+
+
+
+every 3 seconds:
+    if {Header} is not set:
+        set all players' tab list header to "&b&l◸ 싱 글 벙 글  테 스 트 서 버 ◿%nl%&aOnline &f&l▪ &e%amount of all players%%nl%"
+    else:
+        set all players' tab list header to "%{Header}%%nl%&aOnline &f&l▪ &e%amount of all players%%nl%"
+
+    if {Footer} is not set:
+        set all players' tab list footer to "%nl%&c&l.."
+    else:
+        set all players' tab list footer to "%nl%%{Footer}%"
+
+    loop all players:
+        if loop-player is in world "world_nether":
+            set {name} to "&4%loop-player's name%"
+        else if loop-player is in world "world_the_end":
+            set {name} to "&5%loop-player's name%"
+        else:
+            set {name} to "%loop-player's name%"
+
+        if {forceShow} is true:
+            set loop-player's tab list name to "%{name}% &e%loop-player.getScoreboard().getObjective("bac_advancements").getScore(loop-player).getScore()%"
+        else:
+            set loop-player's tab list name to "%{name}%"
+
+
+
+command /tlSetHeader [<text>]:
+    trigger:
+        if player is op:
+            if arg 1 is not set:
+                delete {Header}
+                exit
+
+            set {Header} to colored arg 1
+        else:
+            message "&c&oOP required"
+
+
+            
+command /tlSetFooter [<text>]:
+    trigger:
+        if player is op:
+            if arg 1 is not set:
+                delete {Footer}
+                exit
+
+            set {Footer} to colored arg 1
+        else:
+            message "&c&oOP required"
+
+
+
+command /tlSetShowBacCounter:
+    trigger:
+        if player is op:
+            if {forceShow} is not set:
+                set {forceShow} to true
+            else:
+                delete {forceShow}
+        else:
+            message "&c&oOP required"
