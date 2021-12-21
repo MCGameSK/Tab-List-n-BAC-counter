@@ -17,6 +17,6 @@
 
 Different colors depending on the world   
 ---
-/tlsetheader text   
-/tlsetfooter text   
-/tlsetshowbaccounter   
+## /tlsetheader text   
+## /tlsetfooter text   
+## /tlsetshowbaccounter   
