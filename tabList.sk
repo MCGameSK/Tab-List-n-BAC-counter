@@ -11,7 +11,7 @@ every 3 seconds:
         set all players' tab list header to "%{Header}%%nl%&aOnline &f&l▪ &e%amount of all players%%nl%&aTPS &f&l▪ &e%first element of tps%%nl%"
 
     if {Footer} is not set:
-        set all players' tab list footer to "%nl%&c&l.."
+        set all players' tab list footer to "%nl%&c%time in world "world"%"
     else:
         set all players' tab list footer to "%nl%%{Footer}%"
 
